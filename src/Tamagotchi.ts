@@ -22,11 +22,11 @@ export class Tamagotchi {
   }
   private happinessTimer(): void {
     this.happiness--
+    this.updateParagraph();
     if (this.happiness === 0) {
       clearInterval(this.timer2)
       alert(`${this.name} is dead :(`)
     }
-    this.updateParagraph();
   }
   private updateParagraph(): void {
     (document.querySelector('#my-par') as HTMLParagraphElement).innerText =
@@ -34,8 +34,8 @@ export class Tamagotchi {
       Happiness:${this.happiness} ,Hunger:${this.hunger},Shit:${this.shit} `
   }
   private moreShit(): number {
-    this.updateParagraph();
     if (Math.random() < .5) return this.shit++
+    this.updateParagraph();
   }
 
   public feed(): number {
